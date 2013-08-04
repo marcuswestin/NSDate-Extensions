@@ -299,6 +299,10 @@
 	return (NSInteger) (ti / D_DAY);
 }
 
+- (NSInteger)daysSinceEpoch {
+    return [self daysAfterDate:[NSDate dateWithTimeIntervalSince1970:0]];
+}
+
 // Thanks, dmitrydims
 // I have not yet thoroughly tested this
 - (NSInteger)distanceInDaysToDate:(NSDate *)anotherDate
