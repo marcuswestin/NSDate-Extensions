@@ -375,4 +375,27 @@
 	NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
 	return components.year;
 }
+
+// Names
+- (NSString *)nameOfMonth {
+    static NSArray* names;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        names = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
+    });
+    NSInteger month = self.month;
+    if (month < 0 || month >= names.count) { return nil; }
+    return names[month];
+}
+- (NSString *)nameOfMonthAbreviated
+{
+    static NSArray* names;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        names = @[@"Jan", @"Feb", @"Mar", @"Apr", @"May", @"Jun", @"Jul", @"Aug", @"Sep", @"Oct", @"Nov", @"Dec"];
+    });
+    NSInteger month = self.month;
+    if (month < 0 || month >= names.count) { return nil; }
+    return names[month];
+}
 @end
